@@ -1,21 +1,16 @@
-import React from 'react';
-import  Navbar  from './navbar';
+import { BrowserRouter, Route, Link ,Routes} from 'react-router-dom';
 import ShowList from './showsList';
+import Navbar from './navbar';
 
-
-  function App() {
-    return (
-        
-        <>
-        <Navbar/>
-           <h1>Welcome to the Podcast App</h1>
-        <ShowList />
-        </>
-       
-       
-   
-    );
-  }
-  
-
-export default App
+function  App (){
+  return (
+    <BrowserRouter>
+    <Navbar/>
+      <Routes>
+        <Route path="/" element={""} />
+        <Route path="/shows" element={<ShowList />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+export default App;

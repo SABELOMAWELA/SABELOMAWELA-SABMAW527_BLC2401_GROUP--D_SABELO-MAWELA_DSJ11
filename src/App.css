@@ -1,5 +1,6 @@
 *{
   box-shadow: border-box;
+  /* display: grid; */
 }
 body{
   margin: 0;
@@ -53,10 +54,18 @@ background-color: #333;
 
 .card-heading {
   font-size: 1.2rem; 
-  font-weight: bold; 
+  font-weight: bold;
+  text-align: center; 
 } 
 
 .cards-grid{
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.root{
+  display: grid;
+}
+
+.SHOWS{
+  justify-self: center;
 }
