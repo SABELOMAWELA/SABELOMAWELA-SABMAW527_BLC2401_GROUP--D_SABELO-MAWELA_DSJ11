@@ -5,7 +5,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 
-const SwiperComponent = () => {
+const SwiperComponent = ({ images, titles }) => {
   return (
     <Swiper
       modules={[Navigation, Pagination, A11y]}
@@ -16,13 +16,15 @@ const SwiperComponent = () => {
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
     >
-      <SwiperSlide>Slide 1</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
-      <SwiperSlide>Slide 4</SwiperSlide>
-      {/* ... other slides if necessary */}
+      {images.map((image, index) => (
+        <SwiperSlide key={index}className='section'>
+          <img src={image} alt={titles[index]} className='card-swiper' />
+          <h2 className='card-heading'>{titles[index]}</h2>
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 };
 
 export default SwiperComponent;
+
