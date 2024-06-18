@@ -43,6 +43,7 @@ background-color: #333;
   display: flex; 
   flex-direction: column;
   width: 300px;
+  cursor: pointer;
 }
 
 .card-image {
@@ -95,7 +96,8 @@ display: grid;
 .home-intro{
   justify-self: center;
 }
-.shortstory{
-  font-size: 50px;
-
+.shortstory {
+  font-size: 25px;
+  justify-self: center;
+  margin: 0;
 }
