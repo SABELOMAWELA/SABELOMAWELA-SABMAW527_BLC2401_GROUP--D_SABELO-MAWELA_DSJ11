@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 
 export default function ShowList() {
-  const [images, setImages] = useState([]);
-  const [titles, setTitles] = useState([]);
+  const [shows, setShows] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('https://podcast-api.netlify.app/')
       .then(response => response.json())
       .then(data => {
-        const images = data.map(item => item.image);
-        const titles = data.map(item => item.title);
-        setImages(images);
-        setTitles(titles);
+        setShows(data);
         setLoading(false);
-    })
-    .catch(error => {
+      })
+      .catch(error => {
         console.error(error);
         setLoading(false);
       });
@@ -23,22 +21,23 @@ export default function ShowList() {
 
   if (loading) return <div>Loading...</div>;
 
+  const handleClick = (show) => {
+    navigate('/ShowDetail', { state: { show } });
+  };
 
   return (
-    <div >
-         <div className='root'>
-          <h1 className='SHOWS'>Dive into the stories that move us. </h1>
-            </div> 
+    <div>
+      <div className='root'>
+        <h1 className='SHOWS'>Dive into the stories that move us.</h1>
+      </div>
       <ul className='cards-grid'>
-        {images.map((image, index) => (
-          <dd key={index}className='card'>
-            <img className='card-image' src={image} alt={titles[index]} />
-            <h2 className='card-heading'>{titles[index]}</h2>
-          </dd>
+        {shows.map((show, index) => (
+          <li key={index} className='card'>
+            <img className='card-image' src={show.image} alt={show.title} onClick={() => handleClick(show)}/>
+            <h2 className='card-heading'>{show.title}</h2>
+          </li>
         ))}
       </ul>
     </div>
   );
 }
-
-

@@ -56,6 +56,7 @@ background-color: #333;
   font-size: 1.2rem; 
   font-weight: bold;
   text-align: center; 
+  margin-bottom: 22px;
 } 
 
 .cards-grid{
@@ -87,4 +88,14 @@ img{
   width: 300px;
   height: 300px;
   justify-self: center;
+}
+.intro-home{
+display: grid;
+}
+.home-intro{
+  justify-self: center;
+}
+.shortstory{
+  font-size: 50px;
+
 }
