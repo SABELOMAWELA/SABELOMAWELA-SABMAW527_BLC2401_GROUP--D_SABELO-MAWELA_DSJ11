@@ -1,13 +1,17 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate  } from 'react-router-dom';
 import './App.css';
 
 export default function SeasonDetail() {
   const location = useLocation();
   const { season } = location.state;
+  const navigate = useNavigate();
 
   return (
     <div className="container">
+        <button className="back-button" onClick={() => navigate(-1)}>
+        &larr; <span>Back to Show Detail</span>
+      </button>
       <div className="header">
         <img src={season.image} alt={season.title} />
         <div>
@@ -17,7 +21,7 @@ export default function SeasonDetail() {
       <div className="episodes">
         {season.episodes.map((episode, index) => (
           <div key={index} className="episode">
-            <p className="episode-title">{episode.title}</p>
+            <p className="episode-title">{index + 1}.{episode.title}</p>
             <p className="episode-description">{episode.description}</p>
             <audio controls>
               <source src={episode.file} type="audio/mpeg" />

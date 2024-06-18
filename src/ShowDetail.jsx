@@ -38,17 +38,17 @@ export default function ShowDetail() {
           <h1>{show.title}</h1>
           <p>{show.description}</p>
           <strong>
-            <p>Seasons:{show.seasons}</p>
+            <p>Seasons: {show.seasons}</p>
           </strong>
           <div className="genres">
-            <strong>Genres:</strong>
             {show.genres.map((genre, index) => (
               <div key={index} className="genre">
-                {genre}
+                <strong>Genres: {genre}</strong>
+                
               </div>
             ))}
           </div>
-          <p>Updated: {new Date(show.updated).toLocaleDateString()}</p>
+          <strong><p>Updated: {new Date(show.updated).toLocaleDateString()}</p></strong>
         </div>
       </div>
       <div className="seasons">
