@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./App.css";
+import genresmapping from "./genresmapping";
 
 export default function ShowDetail() {
   const location = useLocation();
@@ -46,7 +47,7 @@ export default function ShowDetail() {
           <div className="genres">
             {show.genres.map((genre, index) => (
               <div key={index} className="genre">
-                <strong>Genres: {genre}</strong>
+                <strong>Genres: {genresmapping[genre]}</strong>
                 
               </div>
             ))}
