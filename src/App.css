@@ -188,3 +188,36 @@ body {
   font-size: 1.1em;
   text-align: left;
 }
+.back-button {
+  display: inline-block;
+  margin-bottom: 20px;
+  background-color: #fff;
+  color: #333;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.back-button:hover {
+  background-color: #333;
+  color: #fff;
+}
+.favorite-button {
+  display: inline-block;
+  margin-bottom: 20px;
+  background-color: #FF4500;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.favorite-button:hover {
+  background-color: #cc3700;
+}

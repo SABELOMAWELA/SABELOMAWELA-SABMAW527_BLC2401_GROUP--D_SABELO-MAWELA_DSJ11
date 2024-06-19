@@ -9,6 +9,9 @@ export default function Navbar (){
         <li>
         <a href="/">LogIn</a>
         </li>
+        <li>
+        <a href="/Favorites">favorite</a>
+        </li>
         </ul> 
     </nav>
     

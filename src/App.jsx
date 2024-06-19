@@ -4,6 +4,7 @@ import Navbar from './navbar';
 import Home from './Home';
 import ShowDetail from './ShowDetail';
 import SeasonDetail from './SeasonDetail'
+import Favorites from './Favorites';
 
 function  App (){
   return (
@@ -14,6 +15,7 @@ function  App (){
         <Route path="/shows" element={<ShowList />} />
         <Route path="/ShowDetail" element={<ShowDetail />} />
         <Route path="/SeasonDetail/:id" element={<SeasonDetail />} />
+        <Route path="/favorites" element={<Favorites />} />
       </Routes>
     </BrowserRouter>
   );

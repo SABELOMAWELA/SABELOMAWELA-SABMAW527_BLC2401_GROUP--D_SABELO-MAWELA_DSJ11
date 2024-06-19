@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation, useNavigate  } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './App.css';
 
 export default function SeasonDetail() {
@@ -7,9 +7,31 @@ export default function SeasonDetail() {
   const { season } = location.state;
   const navigate = useNavigate();
 
+  const addToFavorites = (episode) => {
+    const episodeWithSeasonInfo = { ...episode, seasonTitle: season.title, seasonImage: season.image };
+    const existingFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const isAlreadyFavorite = existingFavorites.some(fav => fav.title === episode.title);
+
+    if (!isAlreadyFavorite) {
+      const updatedFavorites = [...existingFavorites, episodeWithSeasonInfo];
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+      alert(`${episode.title} has been added to your favorites!`);
+    } else {
+      alert(`${episode.title} is already in your favorites!`);
+    }
+  };
+
+  const removeFromFavorites = (episode) => {
+    const existingFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const updatedFavorites = existingFavorites.filter(fav => fav.title !== episode.title);
+
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    alert(`${episode.title} has been removed from your favorites!`);
+  };
+
   return (
     <div className="container">
-        <button className="back-button" onClick={() => navigate(-1)}>
+      <button className="back-button" onClick={() => navigate(-1)}>
         &larr; <span>Back to Show Detail</span>
       </button>
       <div className="header">
@@ -21,7 +43,15 @@ export default function SeasonDetail() {
       <div className="episodes">
         {season.episodes.map((episode, index) => (
           <div key={index} className="episode">
-            <p className="episode-title">{index + 1}.{episode.title}</p>
+            <p className="episode-title">
+              {index + 1}. {episode.title}
+              <button onClick={() => addToFavorites(episode)} className="favorites-button">
+                Add to Favorites
+              </button>
+              <button onClick={() => removeFromFavorites(episode)} className="remove-button">
+                Remove from Favorites
+              </button>
+            </p>
             <p className="episode-description">{episode.description}</p>
             <audio controls>
               <source src={episode.file} type="audio/mpeg" />

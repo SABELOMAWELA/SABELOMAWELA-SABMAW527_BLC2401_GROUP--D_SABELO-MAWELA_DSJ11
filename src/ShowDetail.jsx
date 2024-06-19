@@ -32,6 +32,9 @@ export default function ShowDetail() {
 
   return (
     <div className="container">
+         <button className="back-button" onClick={() => navigate(-1)}>
+        &larr; <span>Back to Show Detail</span>
+      </button>
       <div className="header">
         <img src={show.image} alt={show.title} />
         <div>
