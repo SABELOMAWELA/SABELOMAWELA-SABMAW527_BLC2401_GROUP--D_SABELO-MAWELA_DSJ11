@@ -24,11 +24,11 @@ export default function ShowDetail() {
   }, [show.id]);
 
   const seasons = (shows?.seasons && Object.values(shows.seasons)) || [];
-
+// console.log(seasons)
   if (loading) return <div>Loading...</div>;
 
   const handleSeasonClick = (season) => {
-    navigate(`/SeasonDetail/${season.id}`, { state: { season } });
+    navigate(`/SeasonDetail/${season.season}`, { state: { season } });
   };
 
   return (

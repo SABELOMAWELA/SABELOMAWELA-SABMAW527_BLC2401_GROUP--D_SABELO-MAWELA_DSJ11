@@ -5,10 +5,13 @@ import './App.css';
 export default function SeasonDetail() {
   const location = useLocation();
   const { season, showId } = location.state; // Ensure `showId` is passed in the state
+  console.log( showId )
+  console.log( showId )
   const navigate = useNavigate();
 
+
   const addToFavorites = (episode) => {
-    const episodeWithSeasonInfo = { ...episode, seasonId: season.id, seasonTitle: season.title, seasonImage: season.image };
+    const episodeWithSeasonInfo = { ...episode, seasonId: season.episode, seasonTitle: season.title, seasonImage: season.image };
     const existingFavorites = JSON.parse(localStorage.getItem('favorites')) || {};
     
     if (!existingFavorites[showId]) {
