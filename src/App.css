@@ -205,3 +205,48 @@ body {
   background-color: #333;
   color: #fff;
 }
+.nav .search-bar {
+  padding: 0.5rem;
+  margin-right: 1rem;
+}
+
+.nav .sort-button {
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+/* Add to Favorites button */
+.favorites-button {
+  background-color: #ffd700; /* Yellow-orange */
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Drop shadow */
+}
+
+.favorites-button:hover {
+  background-color: #ffc107; /* Lighter yellow-orange on hover */
+}
+
+/* Remove from Favorites button */
+.remove-button {
+  background-color: #e74c3c; /* Deep red */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Drop shadow */
+}
+
+.remove-button:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+.card-info {
+  text-align: center;
+  margin: 0;
+}

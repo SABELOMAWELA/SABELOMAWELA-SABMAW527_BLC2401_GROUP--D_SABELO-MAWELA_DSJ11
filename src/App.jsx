@@ -19,7 +19,7 @@ function App() {
         <Route path="/shows" element={<ShowList searchTerm={searchTerm} sortOrder={sortOrder} />} />
         <Route path="/ShowDetail" element={<ShowDetail />} />
         <Route path="/SeasonDetail/:id" element={<SeasonDetail />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/favorites" element={<Favorites searchTerm={searchTerm} sortOrder={sortOrder} />} />
       </Routes>
     </BrowserRouter>
   );

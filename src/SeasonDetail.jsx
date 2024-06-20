@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './App.css';
 
+
 export default function SeasonDetail() {
   const location = useLocation();
   const { season, showId } = location.state; // Ensure `showId` is passed in the state
@@ -62,7 +63,7 @@ export default function SeasonDetail() {
                 Remove from Favorites
               </button>
             </p>
-            <p className="episode-description">{episode.description}</p>
+            <p className="episode-description">Descrption: {episode.description}</p>
             <audio controls>
               <source src={episode.file} type="audio/mpeg" />
               Your browser does not support the audio element.

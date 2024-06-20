@@ -24,7 +24,7 @@ export default function ShowDetail() {
   }, [show.id]);
 
   const seasons = (shows?.seasons && Object.values(shows.seasons)) || [];
-// console.log(seasons)
+console.log(seasons)
   if (loading) return <div>Loading...</div>;
 
   const handleSeasonClick = (season) => {
@@ -48,7 +48,6 @@ export default function ShowDetail() {
             {show.genres.map((genre, index) => (
               <div key={index} className="genre">
                 <strong>Genre: {genresmapping[genre]}</strong>
-                
               </div>
             ))}
           </div>

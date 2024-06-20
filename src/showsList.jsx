@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; 
+import genresmapping from "./genresmapping";
 
 export default function ShowList({ searchTerm, sortOrder }) {
   const [shows, setShows] = useState([]);
@@ -51,7 +52,11 @@ export default function ShowList({ searchTerm, sortOrder }) {
           <li key={index} className='card'>
             <img className='card-image' src={show.image} alt={show.title} onClick={() => handleClick(show)} />
             <h2 className='card-heading'>{show.title}</h2>
+            <p className='card-info'>Seasons: {show.seasons}</p>
+            <p className='card-info'>Genre: {show.genres.map(genre => genresmapping[genre]).join(', ')}</p>
+            <p className='card-info'>Updated: {new Date(show.updated).toLocaleDateString()}</p>
           </li>
+
         ))}
       </ul>
     </div>
