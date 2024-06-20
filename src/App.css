@@ -205,19 +205,3 @@ body {
   background-color: #333;
   color: #fff;
 }
-.favorite-button {
-  display: inline-block;
-  margin-bottom: 20px;
-  background-color: #FF4500;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 16px;
-}
-
-.favorite-button:hover {
-  background-color: #cc3700;
-}

@@ -47,7 +47,7 @@ export default function ShowDetail() {
           <div className="genres">
             {show.genres.map((genre, index) => (
               <div key={index} className="genre">
-                <strong>Genres: {genresmapping[genre]}</strong>
+                <strong>Genre: {genresmapping[genre]}</strong>
                 
               </div>
             ))}
