@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import genresmapping from "./genresmapping";
+import './App.css';
 
 export default function ShowList({ searchTerm, sortOrder }) {
   const [shows, setShows] = useState([]);
@@ -43,20 +44,21 @@ export default function ShowList({ searchTerm, sortOrder }) {
   };
 
   return (
-    <div>
-      <div className='root'>
-        <h1 className='SHOWS'>Dive into the stories that move us.</h1>
+    <div className="show-list-container">
+      <div className='header'>
+        <h1 className='title'>Dive into the stories that move us.</h1>
       </div>
       <ul className='cards-grid'>
         {displayedShows.map((show, index) => (
-          <li key={index} className='card'>
-            <img className='card-image' src={show.image} alt={show.title} onClick={() => handleClick(show)} />
-            <h2 className='card-heading'>{show.title}</h2>
-            <p className='card-info'>Seasons: {show.seasons}</p>
-            <p className='card-info'>Genre: {show.genres.map(genre => genresmapping[genre]).join(', ')}</p>
-            <p className='card-info'>Updated: {new Date(show.updated).toLocaleDateString()}</p>
+          <li key={index} className='card' onClick={() => handleClick(show)}>
+            <img className='card-image' src={show.image} alt={show.title} />
+            <div className='card-content'>
+              <h2 className='card-heading'>{show.title}</h2>
+              <p className='card-info'>Seasons: {show.seasons}</p>
+              <p className='card-info'>Genre: {show.genres.map(genre => genresmapping[genre]).join(', ')}</p>
+              <p className='card-info'>Updated: {new Date(show.updated).toLocaleDateString()}</p>
+            </div>
           </li>
-
         ))}
       </ul>
     </div>

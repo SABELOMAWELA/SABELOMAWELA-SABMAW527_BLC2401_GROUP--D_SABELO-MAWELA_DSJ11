@@ -17,6 +17,9 @@ const Navbar = ({ setSearchTerm, setSortOrder }) => {
           <a href="/shows">Shows</a>
         </li>
         <li>
+          <a href="/Home">Home</a>
+        </li>
+        <li>
           <a href="/Favorites">Favorite</a>
         </li>
       </ul>

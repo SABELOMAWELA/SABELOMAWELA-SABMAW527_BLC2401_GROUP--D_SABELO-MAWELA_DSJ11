@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './App.css';
+import './App.css'; 
 
 export default function Favorites({ searchTerm, sortOrder }) {
   const [favorites, setFavorites] = useState(() => {
@@ -53,8 +53,8 @@ export default function Favorites({ searchTerm, sortOrder }) {
   };
 
   return (
-    <div className="container">
-      <h1>Favorites</h1>
+    <div className="favorites-container">
+      <h1 className="favorites-title">Favorites</h1>
       <div className="favorites-list">
         {displayedFavorites.map((episode, index) => (
           <div
@@ -62,9 +62,11 @@ export default function Favorites({ searchTerm, sortOrder }) {
             className="episode-card"
             onClick={() => handleEpisodeClick(episode)}
           >
-            <img src={episode.seasonImage} alt={episode.seasonTitle} />
-            <h2>{episode.title}</h2>
-            <p>{episode.seasonTitle}</p>
+            <img src={episode.seasonImage} alt={episode.seasonTitle} className="episode-image" />
+            <div className="episode-content">
+              <h2 className="episode-title">{episode.title}</h2>
+              <p className="episode-season">{episode.seasonTitle}</p>
+            </div>
           </div>
         ))}
       </div>
