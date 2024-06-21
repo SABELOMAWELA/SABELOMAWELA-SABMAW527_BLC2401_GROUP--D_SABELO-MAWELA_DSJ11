@@ -53,7 +53,7 @@ export default function SeasonDetail() {
       </div>
       <div className="episodes">
         {season.episodes.map((episode, index) => (
-          <div key={index} className="episode">
+          <div key={index} className="episode-cards">
             <p className="episode-title"> Episode:
               {index + 1}. {episode.title}
               <button onClick={() => addToFavorites(episode)} className="favorites-button">

@@ -9,6 +9,7 @@ export default function ShowDetail() {
   const { show } = location.state;
   const [shows, setShows] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedSeason, setSelectedSeason] = useState("All");
 
   useEffect(() => {
     fetch(`https://podcast-api.netlify.app/id/${show.id}`)
@@ -24,16 +25,17 @@ export default function ShowDetail() {
   }, [show.id]);
 
   const seasons = (shows?.seasons && Object.values(shows.seasons)) || [];
-console.log(seasons)
+  console.log(seasons);
+
   if (loading) return <div>Loading...</div>;
 
-  const handleSeasonClick = (season) => {
-    navigate(`/SeasonDetail/${season.season}`, { state: { season } });
+  const handleSeasonSelect = (event) => {
+    setSelectedSeason(event.target.value);
   };
 
   return (
     <div className="container">
-         <button className="back-button" onClick={() => navigate(-1)}>
+      <button className="back-button" onClick={() => navigate(-1)}>
         &larr; <span>Back to Show Detail</span>
       </button>
       <div className="header">
@@ -51,20 +53,50 @@ console.log(seasons)
               </div>
             ))}
           </div>
-          <strong><p>Updated: {new Date(show.updated).toLocaleDateString()}</p></strong>
+          <strong>
+            <p>Updated: {new Date(show.updated).toLocaleDateString()}</p>
+          </strong>
         </div>
       </div>
-      <div className="seasons">
-        {seasons.map((season, index) => (
-          <div
-            key={index}
-            className="season-card"
-            onClick={() => handleSeasonClick(season)}
-          >
-            <img src={season.image} alt={season.title} />
-            <h2>{season.title}</h2>
-          </div>
-        ))}
+      <div className="seasons-dropdown">
+        <label htmlFor="season-select">Select Season: </label>
+        <select id="season-select" onChange={handleSeasonSelect} defaultValue="All">
+          <option value="All">All</option>
+          {seasons.map((season, index) => (
+            <option key={index} value={season.season}>
+              {season.season}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="season-details">
+        {selectedSeason === "All"
+          ? seasons.map((season, index) => (
+              <div
+                key={index}
+                className="season-card"
+                onClick={() =>
+                  navigate(`/SeasonDetail/${season.season}`, { state: { season } })
+                }
+              >
+                <img src={season.image} alt={season.title} />
+                <h2>{season.title}</h2>
+              </div>
+            ))
+          : seasons
+              .filter((season) => season.season.toString() === selectedSeason)
+              .map((season, index) => (
+                <div
+                  key={index}
+                  className="season-card"
+                  onClick={() =>
+                    navigate(`/SeasonDetail/${season.season}`, { state: { season } })
+                  }
+                >
+                  <img src={season.image} alt={season.title} />
+                  <h2>{season.title}</h2>
+                </div>
+              ))}
       </div>
     </div>
   );

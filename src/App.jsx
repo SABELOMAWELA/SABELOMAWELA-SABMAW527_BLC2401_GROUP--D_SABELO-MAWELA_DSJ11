@@ -15,6 +15,7 @@ function App() {
     <BrowserRouter>
       <Navbar setSearchTerm={setSearchTerm} setSortOrder={setSortOrder} />
       <Routes>
+       <Route path="/" element={<Home />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/shows" element={<ShowList searchTerm={searchTerm} sortOrder={sortOrder} />} />
         <Route path="/ShowDetail" element={<ShowDetail />} />
