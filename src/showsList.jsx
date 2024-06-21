@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import genresmapping from "./genresmapping";
 import './App.css';
 
+
 export default function ShowList({ searchTerm, sortOrder }) {
   const [shows, setShows] = useState([]);
   const [loading, setLoading] = useState(true);

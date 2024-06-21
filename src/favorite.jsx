@@ -33,24 +33,22 @@ export default function Favorites({ searchTerm, sortOrder }) {
     return allFavorites;
   };
 
-  const displayedFavorites = getFilteredAndSortedFavorites();
+  const removeFromFavorites = (episode) => {
+    const existingFavorites = JSON.parse(localStorage.getItem('favorites')) || {};
+    const showId = episode.showId;
 
-  const handleEpisodeClick = (episode) => {
-    const seasonEpisodes = favorites[episode.showId].filter(fav => fav.seasonId === episode.seasonId);
-
-    navigate(`/SeasonDetail/${episode.episode}`, { 
-      state: { 
-        season: { 
-          id: episode.seasonId, 
-          title: episode.seasonTitle, 
-          image: episode.seasonImage, 
-          description: episode.seasonDescription, 
-          episodes: seasonEpisodes 
-        }, 
-        showId: episode.showId 
-      } 
-    });
+    if (existingFavorites[showId]) {
+      existingFavorites[showId] = existingFavorites[showId].filter(fav => fav.title !== episode.title);
+      if (existingFavorites[showId].length === 0) {
+        delete existingFavorites[showId];
+      }
+      localStorage.setItem('favorites', JSON.stringify(existingFavorites));
+      setFavorites(existingFavorites);
+      alert(`${episode.title} has been removed from your favorites!`);
+    }
   };
+
+  const displayedFavorites = getFilteredAndSortedFavorites();
 
   return (
     <div className="favorites-container">
@@ -60,12 +58,34 @@ export default function Favorites({ searchTerm, sortOrder }) {
           <div
             key={index}
             className="episode-card"
-            onClick={() => handleEpisodeClick(episode)}
+            onClick={() => {
+              navigate(`/SeasonDetail/${episode.episode}`, { 
+                state: { 
+                  season: { 
+                    id: episode.seasonId, 
+                    title: episode.seasonTitle, 
+                    image: episode.seasonImage, 
+                    description: episode.seasonDescription, 
+                    episodes: episode.seasonEpisodes 
+                  }, 
+                  showId: episode.showId 
+                } 
+              });
+            }}
           >
             <img src={episode.seasonImage} alt={episode.seasonTitle} className="episode-image" />
             <div className="episode-content">
               <h2 className="episode-title">{episode.title}</h2>
               <p className="episode-season">{episode.seasonTitle}</p>
+              <audio controls className='audio'>
+                <source src={episode.file} type="audio/mpeg" />
+              </audio>
+              <button onClick={(e) => {
+                e.stopPropagation();
+                removeFromFavorites(episode);
+              }} className="remove-button">
+                Remove from Favorites
+              </button>
             </div>
           </div>
         ))}
