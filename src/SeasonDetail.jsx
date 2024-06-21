@@ -45,7 +45,7 @@ export default function SeasonDetail() {
       <button className="back-button" onClick={() => navigate(-1)}>
         &larr; <span>Back to Show Detail</span>
       </button>
-      <div className="header">
+      <div className="Header">
         <img src={season.image} alt={season.title} />
         <div>
           <h1>{season.title}</h1>

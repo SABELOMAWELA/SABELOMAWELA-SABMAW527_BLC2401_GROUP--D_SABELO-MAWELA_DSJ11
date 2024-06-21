@@ -50,7 +50,11 @@ background-color: #333;
     justify-content: space-between;
     align-items: center;
   }
-  
+  .Header{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  }
   
   .title {
     font-size: 2.5em;
@@ -278,3 +282,56 @@ display: grid;
   font-size: 1em;
   padding: 10px;
 }
+.favorites-container {
+  padding: 20px;
+}
+
+.favorites-title {
+  font-size: 2.5em;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.favorites-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.episode-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.episode-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.episode-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.episode-content {
+  padding: 15px;
+}
+
+.episode-title {
+  font-size: 1.5em;
+  margin: 0 0 10px;
+  color: #333;
+}
+
+.episode-season {
+  font-size: 0.9em;
+  color: #666;
+  margin: 5px 0;
+}
+
