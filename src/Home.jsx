@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SwiperComponent from "./swiper";
-import ShowList from "./showsList";
-import './App.css'
+import './App.css';
 
 function Home() {
   const [images, setImages] = useState([]);
   const [titles, setTitles] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('https://podcast-api.netlify.app/')
@@ -30,10 +31,11 @@ function Home() {
 
   return (
     <div className="home">
-      <div className='intro-home'>
-      <h1 className='home-intro'>Welcome to Podcast!</h1>
-      <p className='shortstory'>We bring you some top-tier shows</p>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste, temporibus amet officiis expedita ipsam aut, eligendi nisi nemo autem ducimus possimus corrupti ab totam. Eius ullam nesciunt maxime commodi ratione.</p>
+      <div className="intro-home">
+        <h1 className="home-intro">Welcome to Podcast!</h1>
+        <p className="shortstory">We bring you some top-tier shows</p>
+        {/* <p className="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste, temporibus amet officiis expedita ipsam aut, eligendi nisi nemo autem ducimus possimus corrupti ab totam. Eius ullam nesciunt maxime commodi ratione.</p> */}
+        <button className="view-more-button" onClick={() => navigate('/shows')}>View More Shows</button>
       </div>
       <SwiperComponent images={images} titles={titles} />
     </div>

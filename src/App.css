@@ -130,18 +130,46 @@ img{
   height: 300px;
   justify-self: center;
 }
-.intro-home{
-display: grid;
+.home {
+  text-align: center;
+  padding: 20px;
 }
-.home-intro{
-  justify-self: center;
-}
-.shortstory {
-  font-size: 25px;
-  justify-self: center;
-  margin: 0;
+.intro-home {
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
+.home-intro {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+.description {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.view-more-button {
+  background-color: #ff7e5f;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-more-button:hover {
+  background-color: #feb47b;
+}
+.shortstory {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
 
 
 .container {
@@ -262,7 +290,8 @@ display: grid;
 }
 .genre-dropdown {
   font-size: 1em;
-  padding: 10px;
+  padding: 12px;
+  border-radius: 50px;
 }
 .favorites-container {
   padding: 20px;
@@ -362,4 +391,15 @@ display: grid;
 
 .remove-button:hover {
   background-color: #c82333;
+}
+.sort-order-dropdown, .date-sort-dropdown {
+  padding: 14px;
+  border-radius: 50px;
+}
+.swiper-slide swiper-slide-active section{
+
+    width: 459.667px;
+    margin-left: 45px;
+    margin-right: 50px;
+
 }

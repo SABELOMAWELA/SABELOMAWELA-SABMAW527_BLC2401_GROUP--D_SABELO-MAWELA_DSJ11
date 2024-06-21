@@ -68,7 +68,7 @@ export default function ShowDetail() {
             </option>
           ))}
         </select>
-      </div>
+      </div> 
       <div className="season-details">
         {selectedSeason === "All"
           ? seasons.map((season, index) => (
