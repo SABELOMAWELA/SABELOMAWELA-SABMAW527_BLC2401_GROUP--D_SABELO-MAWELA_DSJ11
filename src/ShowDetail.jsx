@@ -36,7 +36,7 @@ console.log(seasons)
          <button className="back-button" onClick={() => navigate(-1)}>
         &larr; <span>Back to Show Detail</span>
       </button>
-      <div className="header">
+      <div className="header2">
         <img src={show.image} alt={show.title} />
         <div>
           <h1>{show.title}</h1>

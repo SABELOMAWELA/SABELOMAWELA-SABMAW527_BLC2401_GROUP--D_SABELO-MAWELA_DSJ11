@@ -6,6 +6,7 @@ import './App.css';
 export default function ShowList({ searchTerm, sortOrder }) {
   const [shows, setShows] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedGenre, setSelectedGenre] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,6 +26,12 @@ export default function ShowList({ searchTerm, sortOrder }) {
     let filteredShows = shows.filter(show =>
       show.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    if (selectedGenre) {
+      filteredShows = filteredShows.filter(show =>
+        show.genres.includes(parseInt(selectedGenre))
+      );
+    }
 
     if (sortOrder === 'A-Z') {
       filteredShows.sort((a, b) => a.title.localeCompare(b.title));
@@ -47,6 +54,16 @@ export default function ShowList({ searchTerm, sortOrder }) {
     <div className="show-list-container">
       <div className='header'>
         <h1 className='title'>Dive into the stories that move us.</h1>
+        <select 
+          value={selectedGenre} 
+          onChange={(e) => setSelectedGenre(e.target.value)} 
+          className='genre-dropdown'
+        >
+          <option value="">All Genres</option>
+          {Object.entries(genresmapping).map(([key, value]) => (
+            <option key={key} value={key}>{value}</option>
+          ))}
+        </select>
       </div>
       <ul className='cards-grid'>
         {displayedShows.map((show, index) => (

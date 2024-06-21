@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SwiperComponent from "./swiper";
-// import ShowList from "./showsList";
+import ShowList from "./showsList";
+import './App.css'
 
 function Home() {
   const [images, setImages] = useState([]);
@@ -32,6 +33,7 @@ function Home() {
       <div className='intro-home'>
       <h1 className='home-intro'>Welcome to Podcast!</h1>
       <p className='shortstory'>We bring you some top-tier shows</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste, temporibus amet officiis expedita ipsam aut, eligendi nisi nemo autem ducimus possimus corrupti ab totam. Eius ullam nesciunt maxime commodi ratione.</p>
       </div>
       <SwiperComponent images={images} titles={titles} />
     </div>
