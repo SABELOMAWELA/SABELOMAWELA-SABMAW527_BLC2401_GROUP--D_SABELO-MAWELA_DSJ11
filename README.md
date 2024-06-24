@@ -25,7 +25,8 @@ This is a web application that provides a platform for users to explore and inte
 - Clone the repository to your local machine
 - Install dependencies using npm install
 - Start the application using npm start
-- Open the application in your web browser at http://localhost:3000
+- Open the application in your web browser at http://localhost
+  
 License
 - This project is licensed under the MIT License. See LICENSE for details.
 
